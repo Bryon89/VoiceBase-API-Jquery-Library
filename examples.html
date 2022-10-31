@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <script src="VBLibrary.js"></script>
+</head>
+<body>
+    <div>
+        <p>Use Forms to submit API requests, responses are console.logged</p>
+    </div>
+    <div>
+        <h1>UploadMediaUrl()</h1>
+        <p>Allows you to submit a new audio recording url to the VoiceBase platform for analysis.</p>
+        <p>Here is an example URL you can use, https://download.samplelib.com/mp3/sample-3s.mp3</p>
+        <p>A bearer token is required. Additional JSON configuration (instruction settings for VoiceBase on how to process your audio/features) and metadata (metadata about the audio recording) are optional.</p>
+        <form id="UploadMediaUrl" class="UploadMediaUrl" onsubmit="return false;">
+            <label for="UploadMediaUrlBearerToken">VoiceBase Account Bearer Token:</label><br>
+            <input type="password" id="UploadMediaUrlBearerToken" name="UploadMediaUrlBearerToken" value=""><br>
+            <label for="UploadMediaUrlUrl">MediaUrl:</label><br>
+            <input type="text" id="UploadMediaUrlUrl" name="UploadMediaUrlUrl" value=""><br>
+            <input type="submit" value="Submit" onclick="uploadMediaUrl(document.getElementById('UploadMediaUrlBearerToken').value, document.getElementById('UploadMediaUrlUrl').value);">
+        </form>
+    </div>
+    <div>
+        <h1>UploadMediaFile()</h1>
+        <p>Allows you to submit a new audio recording file to the VoiceBase platform for analysis.</p>
+        <p>You can download this to your computer then attach it as an example, https://download.samplelib.com/mp3/sample-3s.mp3</p>
+        <p>A bearer token is required. Additional JSON configuration (instruction settings for VoiceBase on how to process your audio/features) and metadata (metadata about the audio recording) are optional.</p>
+        <form id="UploadMediaFile" class="UploadMediaFile" onsubmit="return false;">
+            <label for="UploadMediaFileBearerToken">VoiceBase Account Bearer Token:</label><br>
+            <input type="password" id="UploadMediaFileBearerToken" name="UploadMediaFileBearerToken" value=""><br>
+            <label for="UploadMediaFileFile">MediaFile:</label><br>
+            <input type="file" id="UploadMediaFileFile" name="UploadMediaFileFile" value=""><br>
+            <input type="submit" value="Submit" onclick="uploadMediaFile(document.getElementById('UploadMediaFileBearerToken').value, document.getElementById('UploadMediaFileFile').files[0]);">
+        </form>
+    </div>
+    <div>
+        <h1>getAllMedia()</h1>
+        <p>Returns mediaIds (VoiceBase unique Ids) for the 20 most recent audio added to your VoiceBase account.</p>
+        <p>Requires a bearer token.</p>
+        <form id="getAllMedia" class="getAllMedia" onsubmit="return false;">
+            <label for="getallmediabearertoken">VoiceBase Account Bearer Token:</label><br>
+            <input type="password" id="getallmediabearertoken" name="getallmediabearertoken" value=""><br>
+            <input type="submit" value="Submit" onclick="getAllMedia(document.getElementById('getallmediabearertoken').value);">
+        </form>
+    </div>
+    <div>
+        <h2>getSingleMedia()</h1>
+        <p>Returns the full results (transcription, analytics, etc) for a single audio that was previously uploaded to VoiceBase.</p>
+        <p>Requires a mediaId and bearer token.</p>
+        <form id="getSingleMedia" class="getSingleMedia" onsubmit="return false;">
+            <label for="getSingleMediaBearerToken">VoiceBase Account Bearer Token:</label><br>
+            <input type="password" id="getSingleMediaBearerToken" name="getSingleMediaBearerToken" value=""><br>
+            <label for="getSingleMediaMediaId">MediaId:</label><br>
+            <input type="text" id="getSingleMediaMediaId" name="getSingleMediaMediaId" value=""><br>
+            <input type="submit" value="Submit" onclick="getSingleMedia(document.getElementById('getSingleMediaBearerToken').value, document.getElementById('getSingleMediaMediaId').value);">
+        </form> 
+    </div>
+</body>
+</html>
